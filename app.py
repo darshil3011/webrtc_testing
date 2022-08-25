@@ -5,7 +5,7 @@ import threading
 import urllib.request
 from pathlib import Path
 from typing import List, NamedTuple, Optional
-
+import object_detection as detect
 import av
 import cv2
 import matplotlib.pyplot as plt
@@ -13,6 +13,7 @@ import numpy as np
 import pydub
 import streamlit as st
 from aiortc.contrib.media import MediaPlayer
+import object_detection as detect
 
 from streamlit_webrtc import (
     RTCConfiguration,
@@ -209,18 +210,26 @@ def app_object_detection():
 
     def callback(frame: av.VideoFrame) -> av.VideoFrame:
         image = frame.to_ndarray(format="bgr24")
-        blob = cv2.dnn.blobFromImage(
-            cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5
-        )
-        net.setInput(blob)
-        detections = net.forward()
-        annotated_image, result = _annotate_image(image, detections)
+        object_detection = detect.display_results(labels, 
+                                                      colors, 
+                                                      height, 
+                                                      width,
+                                                      image, 
+                                                      interpreter, 
+                                                      threshold=0.5)
+        '''
+#         blob = cv2.dnn.blobFromImage(
+#             cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5
+#         )
+#         net.setInput(blob)
+#         detections = net.forward()
+#         annotated_image, result = _annotate_image(image, detections)
 
-        # NOTE: This `recv` method is called in another thread,
-        # so it must be thread-safe.
-        result_queue.put(result)  # TODO:
-
-        return av.VideoFrame.from_ndarray(annotated_image, format="bgr24")
+#         # NOTE: This `recv` method is called in another thread,
+#         # so it must be thread-safe.
+#         result_queue.put(result)  # TODO:
+        '''
+        return av.VideoFrame.from_ndarray(object_detection, format="bgr24")
 
     webrtc_ctx = webrtc_streamer(
         key="object-detection",
