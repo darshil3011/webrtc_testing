@@ -1,7 +1,3 @@
-
-Helper script with functions re design and saving images
-"""
-
 import streamlit as st
 import base64 # used in set_bg_hack to encode bg image
 from datetime import date # used in write_image for file name
