@@ -209,6 +209,7 @@ def app_object_detection():
     )  # TODO: A general-purpose shared state object may be more useful.
 
     def callback(frame: av.VideoFrame) -> av.VideoFrame:
+        labels, colors, height, width, interpreter = detect.define_tf_lite_model()
         image = frame.to_ndarray(format="bgr24")
         object_detection = detect.display_results(labels, 
                                                       colors, 
