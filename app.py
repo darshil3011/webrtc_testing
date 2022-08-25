@@ -217,7 +217,7 @@ def app_object_detection():
                                                       width,
                                                       image, 
                                                       interpreter, 
-                                                      threshold=0.1)
+                                                      threshold=0.25)
         '''
 #         blob = cv2.dnn.blobFromImage(
 #             cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5
