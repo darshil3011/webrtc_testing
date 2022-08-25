@@ -44,7 +44,12 @@ def main():
         "Choose the app mode",
         page_titles,
     )
+    
     st.subheader(page_title)
+    st.markdown(
+        "A Think In Bytes tool that connects a differently-abled person with the world by detecting American Sign Language (ASN) using AI"
+        "This tool is still in its native stage and is just a proof of concept of our computer vision capabilities"
+    )
 
     page_func = pages[page_title]
     page_func()
@@ -116,10 +121,7 @@ def app_object_detection():
         async_processing=True,
     )
 
-    st.markdown(
-        "Add line 1"
-        "Add line 2"
-    )
+
 
 
 
