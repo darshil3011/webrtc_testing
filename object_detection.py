@@ -89,12 +89,12 @@ def define_tf_lite_model():
     
     '''
     # Load the labels and define a color bank
-    LABELS = load_labels("final_model/coco_labels.txt")
+    LABELS = load_labels("coco_labels.txt")
     
     COLORS = np.random.randint(0, 255, size=(len(LABELS), 3), 
                                 dtype="uint8")
     
-    interpreter = tf.lite.Interpreter(model_path='final_model/HandDetectionAug10.tflite')
+    interpreter = tf.lite.Interpreter(model_path='HandDetectionAug10.tflite')
     interpreter.allocate_tensors()
     
     _, HEIGHT, WIDTH, _ = interpreter.get_input_details()[0]['shape']
