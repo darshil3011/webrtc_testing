@@ -210,14 +210,14 @@ def app_object_detection():
 
     def callback(frame: av.VideoFrame) -> av.VideoFrame:
         labels, colors, height, width, interpreter = detect.define_tf_lite_model()
-        image = frame.to_ndarray(format="bgr24")
+        image = frame.to_ndarray(format="rgb24")
         object_detection = detect.display_results(labels, 
                                                       colors, 
                                                       height, 
                                                       width,
                                                       image, 
                                                       interpreter, 
-                                                      threshold=0.5)
+                                                      threshold=0.1)
         '''
 #         blob = cv2.dnn.blobFromImage(
 #             cv2.resize(image, (300, 300)), 0.007843, (300, 300), 127.5
