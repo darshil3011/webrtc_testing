@@ -82,16 +82,7 @@ def main():
 
     pages = {
         "Real time object detection (sendrecv)": app_object_detection,
-        "Real time video transform with simple OpenCV filters (sendrecv)": app_video_filters,  # noqa: E501
-        "Real time audio filter (sendrecv)": app_audio_filter,
-        "Delayed echo (sendrecv)": app_delayed_echo,
-        "Consuming media files on server-side and streaming it to browser (recvonly)": app_streaming,  # noqa: E501
-        "WebRTC is sendonly and images are shown via st.image() (sendonly)": app_sendonly_video,  # noqa: E501
-        "WebRTC is sendonly and audio frames are visualized with matplotlib (sendonly)": app_sendonly_audio,  # noqa: E501
-        "Simple video and audio loopback (sendrecv)": app_loopback,
-        "Configure media constraints and HTML element styles with loopback (sendrecv)": app_media_constraints,  # noqa: E501
-        "Control the playing state programatically": app_programatically_play,
-        "Customize UI texts": app_customize_ui_texts,
+        
     }
     page_titles = pages.keys()
 
@@ -281,33 +272,6 @@ def app_media_constraints():
     )
     st.write(f"The frame rate is set as {frame_rate}. Video style is changed.")
 
-
-def app_programatically_play():
-    """A sample of controlling the playing state from Python."""
-    playing = st.checkbox("Playing", value=True)
-
-    webrtc_streamer(
-        key="programatic_control",
-        desired_playing_state=playing,
-        mode=WebRtcMode.SENDRECV,
-        rtc_configuration=RTC_CONFIGURATION,
-    )
-
-
-def app_customize_ui_texts():
-    webrtc_streamer(
-        key="custom_ui_texts",
-        rtc_configuration=RTC_CONFIGURATION,
-        translations={
-            "start": "開始",
-            "stop": "停止",
-            "select_device": "デバイス選択",
-            "media_api_not_available": "Media APIが利用できない環境です",
-            "device_ask_permission": "メディアデバイスへのアクセスを許可してください",
-            "device_not_available": "メディアデバイスを利用できません",
-            "device_access_denied": "メディアデバイスへのアクセスが拒否されました",
-        },
-    )
 
 
 if __name__ == "__main__":
