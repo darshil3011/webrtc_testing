@@ -175,9 +175,11 @@ def preprocess_image(HEIGHT, WIDTH, image_path, input_type=np.float32):
     Reads image from file path and converts to tf readable
     
     '''
+    '''
     img = tf.io.read_file(image_path)
     img = tf.io.decode_image(img, channels=3)
-    original_image = img
+    '''
+    original_image = img_path
     if input_type == np.uint8:
         img = tf.image.convert_image_dtype(img, tf.uint8)
     else:
