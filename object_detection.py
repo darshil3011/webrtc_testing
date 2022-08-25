@@ -41,7 +41,7 @@ def display_results(LABELS, COLORS, HEIGHT, WIDTH, image_path, interpreter, thre
     results = detect_objects(interpreter, preprocessed_image, threshold=threshold)
 
     # =============Display the results====================
-    original_numpy = original_image.numpy()
+    original_numpy = original_image
     counter = 0
     for obj in results:
         # set counter of text
