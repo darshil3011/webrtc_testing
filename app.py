@@ -15,6 +15,7 @@ import streamlit as st
 from aiortc.contrib.media import MediaPlayer
 import object_detection as detect
 import base64
+from PIL import Image
 
 from streamlit_webrtc import (
     RTCConfiguration,
