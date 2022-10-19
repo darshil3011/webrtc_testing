@@ -30,6 +30,23 @@ RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 )
 
+def add_bg_from_url(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url(data:image/{"jpg"};base64,{encoded_string.decode()});
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+    
+add_bg_from_url('white.jpg') 
 
 def main():
     st.header("Think Mudra - A voice for dumb/deaf")
@@ -165,3 +182,7 @@ if __name__ == "__main__":
     fsevents_logger.setLevel(logging.WARNING)
 
     main()
+    
+    st.markdown("<h2 style='text-align: center; color: black;'>Object Detection Applications</h2>", unsafe_allow_html=True)
+    image = Image.open('screen3.png')
+    st.image(image)
