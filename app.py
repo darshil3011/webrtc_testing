@@ -186,5 +186,5 @@ if __name__ == "__main__":
     main()
     
     st.markdown("<h2 style='text-align: center; color: black;'>Object Detection Applications</h2>", unsafe_allow_html=True)
-    image = Image.open('screen3.png')
+    image = Image.open('screen4.png')
     st.image(image)
