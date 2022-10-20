@@ -127,7 +127,7 @@ def app_object_detection():
                                                       width,
                                                       image, 
                                                       interpreter, 
-                                                      threshold=0.25)
+                                                      threshold=0.50)
 
         return av.VideoFrame.from_ndarray(object_detection, format="bgr24")
 
