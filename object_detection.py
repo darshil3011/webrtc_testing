@@ -94,7 +94,7 @@ def define_tf_lite_model():
     COLORS = np.random.randint(0, 255, size=(len(LABELS), 3), 
                                 dtype="uint8")
     
-    interpreter = tf.lite.Interpreter(model_path='detect.tflite')
+    interpreter = tf.lite.Interpreter(model_path='detect1.tflite')
     interpreter.allocate_tensors()
     
     _, HEIGHT, WIDTH, _ = interpreter.get_input_details()[0]['shape']
