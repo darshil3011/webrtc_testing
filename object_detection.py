@@ -160,11 +160,11 @@ def detect_objects(interpreter, image, threshold):
 
   results = []
   for i in range(5):
-    if scores[i] >= threshold:
+    if scores >= threshold:
       result = {
           'bounding_box': boxes[i],
           'class_id': classes[i],
-          'score': scores[i]
+          'score': scores
       }
       results.append(result)
   return results
