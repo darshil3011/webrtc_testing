@@ -94,7 +94,7 @@ def define_tf_lite_model():
     COLORS = np.random.randint(0, 255, size=(len(LABELS), 3), 
                                 dtype="uint8")
     
-    interpreter = tf.lite.Interpreter(model_path='HandDetectionAug10.tflite')
+    interpreter = tf.lite.Interpreter(model_path='android.tflite')
     interpreter.allocate_tensors()
     
     _, HEIGHT, WIDTH, _ = interpreter.get_input_details()[0]['shape']
@@ -153,10 +153,10 @@ def detect_objects(interpreter, image, threshold):
   interpreter.invoke()
 
   # Get all output details
-  boxes = get_output_tensor(interpreter, 1)
-  classes = get_output_tensor(interpreter, 3)
-  scores = get_output_tensor(interpreter, 0)
-  count = int(get_output_tensor(interpreter, 2))
+  boxes = get_output_tensor(interpreter, 0)
+  classes = get_output_tensor(interpreter, 1)
+  scores = get_output_tensor(interpreter, 2)
+  count = int(get_output_tensor(interpreter, 3))
 
   results = []
   for i in range(count):
