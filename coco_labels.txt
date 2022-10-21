@@ -1,8 +1,3 @@
-A
-B
-C
-F
-H
-K
-L
-R
+with_mask
+without_mask
+mask_weared_incorrectly
